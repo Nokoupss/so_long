@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 16:38:19 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/02/08 15:20:18 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/02/09 17:50:57 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,10 @@ typedef struct s_game
 	void	*mlx_win;
 }				t_game;
 
-typedef struct s_position
-{
-	int	x;
-	int	y;
-}				t_position;
-
 typedef struct s_map
 {
 	char	**map;
+	char	**map_copy;
 	int		rows;
 	int		cols;
 	int		collectible;
@@ -75,11 +70,17 @@ int		window_display(void);
 int		escape_input(int keysym, t_game *data);
 
 /*
-**init_map.c
+**init_map
 */
 
 t_map	*init_map(void);
 t_map	*create_map(int fd, char *file);
 void	free_map(t_map *map);
+
+/*
+**path_finding
+*/
+
+void	create_copy(t_map *map);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/19 15:36:16 by nbelkace          #+#    #+#              #
-#    Updated: 2024/02/07 16:04:44 by nbelkace         ###   ########.fr        #
+#    Updated: 2024/02/09 16:55:10 by nbelkace         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRCS_C =	$(SRCS)/$(GAME)/display.c \
 			$(SRCS)/$(PARSING)/check_map.c \
 			$(SRCS)/$(PARSING)/check_map_utils.c \
 			$(SRCS)/$(PARSING)/init_map.c \
+			$(SRCS)/$(PARSING)/path_finding.c \
 			main.c \
 
 # Object FIles

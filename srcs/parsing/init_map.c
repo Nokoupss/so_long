@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:13:40 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/02/08 17:01:16 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/02/09 18:50:38 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,9 @@ t_map	*create_map(int fd, char *file)
 		map->map[x] = get_next_line(fd2);
 		len--;
 	}
+
+	ft_printf("%s\n", map->map[x]);
 	close(fd2);
-	map->map[x] = NULL;
 	return (map);
 }
 
@@ -65,6 +66,14 @@ void	free_map(t_map *map)
 		free(map->map[i]);
 		i++;
 	}
+	i = 0;
+	while (map->map_copy[i])
+	{
+		free(map->map_copy[i]);
+		i++;
+	}
 	free(map->map);
+	free(map->map_copy);
 	free(map);
 }
+
