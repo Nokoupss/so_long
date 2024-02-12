@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 16:38:19 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/02/09 17:50:57 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/02/12 16:01:12 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_map
 	int		collectible;
 	int		exit;
 	int		player;
+	int		exit_access;
 }				t_map;
 
 /*
