@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 16:38:19 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/02/12 16:01:12 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/02/26 14:40:24 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ typedef struct s_map
 	int		exit;
 	int		player;
 	int		exit_access;
+	int		player_y;
+	int		player_x;
 }				t_map;
 
 /*
@@ -77,11 +79,15 @@ int		escape_input(int keysym, t_game *data);
 t_map	*init_map(void);
 t_map	*create_map(int fd, char *file);
 void	free_map(t_map *map);
+void	free_copy_map(t_map *map);
 
 /*
 **path_finding
 */
 
 void	create_copy(t_map *map);
+int		player_position(t_map *map);
+int		dfs(t_map *map, int y, int x);
+void	check_path(t_map *map);
 
 #endif

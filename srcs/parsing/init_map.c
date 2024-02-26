@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:13:40 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/02/12 16:01:32 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/02/26 13:48:17 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,19 @@ void	free_map(t_map *map)
 		free(map->map[i]);
 		i++;
 	}
+	free(map->map);
+	free(map);
+}
+
+void	free_copy_map(t_map *map)
+{
+	size_t	i;
+
 	i = 0;
 	while (map->map_copy[i])
 	{
 		free(map->map_copy[i]);
 		i++;
 	}
-	free(map->map);
 	free(map->map_copy);
-	free(map);
 }
-
