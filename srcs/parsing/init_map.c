@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:13:40 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/02/26 13:48:17 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/02/28 18:25:39 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_map	*init_map(void)
 
 	map = (t_map *)malloc(sizeof(t_map));
 	if (map == NULL)
-		return (NULL);
+		return (MALLOC_ERROR);
 	map->map = NULL;
 	map->rows = 0;
 	map->cols = 0;
@@ -42,7 +42,7 @@ t_map	*create_map(int fd, char *file)
 	map->rows = len;
 	map->map = (char **)malloc(sizeof(char *) * (len + 1));
 	if (map->map == NULL)
-		return (NULL);
+		return (MALLOC_ERROR);
 	fd2 = open_file(file);
 	map->map[x] = get_next_line(fd2);
 	while (len > 0)

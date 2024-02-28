@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 15:44:27 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/02/09 18:46:19 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/02/28 17:02:51 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,3 +33,4 @@ int	window_display(void)
 	free(game.mlx_ptr);
 	return (0);
 }
+

@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:06:51 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/02/08 17:43:09 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/02/28 14:04:13 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,9 @@ void	error_message(char *str)
 	int	len;
 
 	len = ft_strlen(str);
-	write(2, str, len);
 	if (write(2, str, len) == -1)
 	{
-		ft_printf("Error\n, la j'avoue t'es fort.\n");
+		write(2, "Error\n, la j'avoue t'es fort.\n", 29);
 		exit(EXIT_FAILURE);
 	}
 }

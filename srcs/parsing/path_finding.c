@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:46:31 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/02/26 14:38:50 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/02/28 14:23:34 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,14 @@ void check_path(t_map *map)
 	{
 		create_copy(map);
 		dfs(map, map->player_y, map->player_x);
-	if (map->exit_access == 1 && map->collectible == 0)
-		ft_printf("Path exists from the starting position to the exit!\n");
-	error_message("Error\nNo path exists from the starting position to the exit\n");
+		if (map->exit_access == 1 && map->collectible == 0)
+		{
+			ft_printf("Path exists from the starting position to the exit!\n");
+			free_copy_map(map);
+			return ;
+		}
 	}
-	error_message("Error\nPlayer not found\n");
+	error_message("Error\nNo path exists from the starting position to the exit\n");
+	free_copy_map(map);
+	exit(EXIT_FAILURE);
 }
