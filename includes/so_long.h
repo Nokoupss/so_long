@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 16:38:19 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/02/26 14:40:24 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/02/29 18:18:04 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,11 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
-# define WIDTH 400
-# define HEIGHT 400 
+# define WIN_WIDTH 400
+# define WIN_HEIGHT 400 
 
 # define EXIT_FAILURE 1
 # define MALLOC_ERROR 0
-
-typedef struct s_game
-{
-	void	*mlx_ptr;
-	void	*mlx_win;
-}				t_game;
 
 typedef struct s_map
 {
@@ -46,6 +40,26 @@ typedef struct s_map
 	int		player_x;
 }				t_map;
 
+typedef struct s_img
+{
+	void	*img;
+}				t_img;
+
+typedef struct s_game
+{
+	void	*mlx_ptr;
+	void	*mlx_win;
+	t_img	*coin;
+	t_img	*doorclosed;
+	t_img	*dooropen;
+	t_img	*floor;
+	t_img	*player;
+	t_img	*wall;
+	int		*width;
+	int		*height;
+	t_map	*map;
+}				t_game;
+
 /*
 **check_map_utils
 */
@@ -53,6 +67,8 @@ typedef struct s_map
 int		get_len_map(int fd);
 void	error_message(char *str);
 int		ft_strlen_backslash_n(char *str);
+int		destroy(t_game *game);
+
 
 /*
 **check_map
@@ -68,8 +84,21 @@ void	check_all_error(t_map *map, char *file);
 /*
 **Game
 */
+/*
+**display
+*/
 
 int		window_display(void);
+int		render_background(t_game *game);
+void	init_sprite(t_game *game);
+
+/*
+**Game
+*/
+/*
+**key_handler
+*/
+
 int		escape_input(int keysym, t_game *data);
 
 /*

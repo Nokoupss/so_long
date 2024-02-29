@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 13:31:46 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/02/28 13:59:59 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/02/29 18:27:50 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,7 @@ int	main(int argc, char **argv)
 	fd = open_file(argv[1]);
 	map = create_map(fd, argv[1]);
 	check_all_error(map, argv[1]);
-	check_path(map);
-	while (map->map[i])
-	{
-		ft_printf("%s", map->map[i]);
-		i++;
-	}
+	window_display();
 	close(fd);
 	free_map(map);
 	return (0);

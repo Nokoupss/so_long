@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:46:31 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/02/28 14:23:34 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/02/29 14:31:49 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,18 @@ void	create_copy(t_map *map)
 	map->map_copy[x] = NULL;
 }
 
-int player_position(t_map *map) 
+int	player_position(t_map *map)
 {
-	int y;
+	int	y;
+	int	x;
 
 	y = 0;
-	while (y < map->rows) 
+	x = 0;
+	while (y < map->rows)
 	{
-		int x = 0;
-		while (x < map->cols) 
+		while (x < map->cols)
 		{
-			if (map->map[y][x] == 'P') 
+			if (map->map[y][x] == 'P')
 			{
 				map->player_y = y;
 				map->player_x = x;
@@ -85,7 +86,7 @@ int	dfs(t_map *map, int y, int x)
 	return (0);
 }
 
-void check_path(t_map *map)
+void	check_path(t_map *map)
 {
 	if (player_position(map) == 1)
 	{
@@ -98,7 +99,7 @@ void check_path(t_map *map)
 			return ;
 		}
 	}
-	error_message("Error\nNo path exists from the starting position to the exit\n");
+	error_message("Error\nNo path exists from start to exit\n");
 	free_copy_map(map);
 	exit(EXIT_FAILURE);
 }
