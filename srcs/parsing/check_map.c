@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:23:28 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/02/09 14:04:26 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/01 15:50:47 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,17 +122,4 @@ void	check_map_outline(t_map *map)
 		}
 		y++;
 	}
-}
-
-void	check_all_error(t_map *map, char *file)
-{
-	check_file_extension(file);
-	check_rectangle(map);
-	check_map_outline(map);
-	if (check_map_characters(map) == 0)
-	{
-		error_message("Error\nInvalid characters in the map.\n");
-		exit(EXIT_FAILURE);
-	}
-	ft_printf("all good les reufs\n");
 }

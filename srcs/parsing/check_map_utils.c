@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:06:51 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/02/29 16:14:42 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/01 15:51:17 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,26 +55,15 @@ int	ft_strlen_backslash_n(char *str)
 	return (i);
 }
 
-int	destroy(t_game *game)
+void	check_all_error(t_map *map, char *file)
 {
-	if (game->coin)
-		mlx_destroy_image(game->mlx_ptr, game->coin);
-	if (game->doorclosed)
-		mlx_destroy_image(game->mlx_ptr, game->doorclosed);
-	if (game->dooropen)
-		mlx_destroy_image(game->mlx_ptr, game->dooropen);
-	if (game->floor)
-		mlx_destroy_image(game->mlx_ptr, game->floor);
-	if (game->player)
-		mlx_destroy_image(game->mlx_ptr, game->player);
-	if (game->wall)
-		mlx_destroy_image(game->mlx_ptr, game->wall);
-	if (game->mlx_win)
-		mlx_destroy_window(game->mlx_ptr, game->mlx_win);
-	if (game->mlx_ptr)
-		mlx_destroy_display(game->mlx_ptr);
-	free(game->mlx_ptr);
-	free_map(game->map);
-	free(game->map);
-	exit(EXIT_FAILURE);
+	check_file_extension(file);
+	check_rectangle(map);
+	check_map_outline(map);
+	if (check_map_characters(map) == 0)
+	{
+		error_message("Error\nInvalid characters in the map.\n");
+		exit(EXIT_FAILURE);
+	}
+	ft_printf("all good\n");
 }
