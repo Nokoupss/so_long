@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 13:31:46 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/01 17:23:45 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/04 15:52:43 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,12 @@ int	main(int argc, char **argv)
 	fd = open_file(argv[1]);
 	game->map = create_map(fd, argv[1]);
 	check_all_error(game->map, argv[1]);
+	check_path(game->map);
 	window_display(game);
 	init_sprite(game);
+	render_all(game);
+	mlx_loop(game->mlx_ptr);
 	close(fd);
-	free_map(game->map);
-	free(game);
+	free_all_memory(game);
 	return (0);
 }

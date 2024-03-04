@@ -6,7 +6,7 @@
 #    By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/19 15:36:16 by nbelkace          #+#    #+#              #
-#    Updated: 2024/03/01 15:45:40 by nbelkace         ###   ########.fr        #
+#    Updated: 2024/03/04 15:16:07 by nbelkace         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,9 @@ UTILS_C = $(SRCS)/$(UTILS)
 
 # Source Files
 SRCS_C =	$(SRCS)/$(GAME)/display.c \
+			$(SRCS)/$(GAME)/game_utils.c \
 			$(SRCS)/$(GAME)/key_handler.c \
+			$(SRCS)/$(GAME)/render_map.c \
 			$(SRCS)/$(PARSING)/check_map_utils.c \
 			$(SRCS)/$(PARSING)/check_map.c \
 			$(SRCS)/$(PARSING)/free_memory.c \

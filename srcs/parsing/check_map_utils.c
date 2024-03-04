@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:06:51 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/01 15:51:17 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/04 15:49:37 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,4 @@ void	check_all_error(t_map *map, char *file)
 		error_message("Error\nInvalid characters in the map.\n");
 		exit(EXIT_FAILURE);
 	}
-	ft_printf("all good\n");
 }

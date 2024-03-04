@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 15:44:27 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/01 17:22:22 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/04 15:04:53 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,48 +28,11 @@ int	window_display(t_game *game)
 	return (1);
 }
 
-int	render_background(t_game *game)
+void	render_all(t_game *game)
 {
-	int	x;
-	int	y;
-
-	x = 0;
-	y = 0;
-	while (game->map->map[y] != NULL)
-	{
-		x = 0;
-		while (game->map->map[y][x] != '\0')
-		{
-			if (game->map->map[y][x] == '1')
-					mlx_put_image_to_window(game->mlx_ptr, game->mlx_ptr, &game->wall, 32, 32);
-			else if (game->map->map[y][x] == '0')
-					mlx_put_image_to_window(game->mlx_ptr, game->mlx_win, &game->floor, 32, 32);
-			x++;
-		}
-		y++;
-	}
-	return (1);
-}
-
-t_img	new_sprite(void *mlx, char *path, t_game *game)
-{
-	t_img	sprite;
-
-	sprite.img = mlx_xpm_file_to_image(mlx, path, &sprite.width, &sprite.height);
-	if (sprite.img == NULL)
-	{
-		destroy_images(game);
-		error_message("Error\nFailed to load sprite.\n");
-	}
-	return (sprite);
-}
-
-void	init_sprite(t_game *game)
-{
-	game->coin = new_sprite(game->mlx_ptr, "../sprite/coin.xpm", game);
-	game->doorclosed = new_sprite(game->mlx_ptr, "../sprite/doorclosed.xpm", game);
-	game->dooropen = new_sprite(game->mlx_ptr, "../sprite/dooropen.xpm", game);
-	game->floor = new_sprite(game->mlx_ptr, "../sprite/floor.xpm", game);
-	game->player = new_sprite(game->mlx_ptr, "../sprite/player.xpm", game);
-	game->wall = new_sprite(game->mlx_ptr, "../sprite/wall.xpm", game);
+	render_wall(game);
+	render_floor(game);
+	render_exit(game);
+	render_collectible(game);
+	render_player(game);
 }

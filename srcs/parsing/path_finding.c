@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:46:31 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/01 15:47:48 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/04 15:49:09 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 void	create_copy(t_map *map)
 {
-	int		x;
+	int		y;
 	int		j;
 
 	map->map_copy = (char **)malloc((map->rows + 1) * sizeof(char *));
 	if (map->map_copy == NULL)
 		return ;
-	x = 0;
-	while (x < map->rows)
+	y = 0;
+	while (map->map[y] != NULL)
 	{
-		map->map_copy[x] = ft_strdup(map->map[x]);
-		if (map->map_copy[x] == NULL)
+		map->map_copy[y] = ft_strdup(map->map[y]);
+		if (map->map_copy[y] == NULL)
 		{
 			j = 0;
-			while (j < x)
+			while (j < y)
 			{
 				free(map->map_copy[j]);
 				j++;
@@ -35,9 +35,9 @@ void	create_copy(t_map *map)
 			free(map->map_copy);
 			return ;
 		}
-		x++;
+		y++;
 	}
-	map->map_copy[x] = NULL;
+	map->map_copy[y] = NULL;
 }
 
 int	player_position(t_map *map)
@@ -47,9 +47,10 @@ int	player_position(t_map *map)
 
 	y = 0;
 	x = 0;
-	while (y < map->rows)
+	while (map->map[y] != NULL)
 	{
-		while (x < map->cols)
+		x = 0;
+		while (map->map[y][x] != '\0')
 		{
 			if (map->map[y][x] == 'P')
 			{
@@ -91,10 +92,9 @@ void	check_path(t_map *map)
 	if (player_position(map) == 1)
 	{
 		create_copy(map);
-		dfs(map, map->player_y, map->player_x);
+		dfs(map, 2, 2);
 		if (map->exit_access == 1 && map->collectible == 0)
 		{
-			ft_printf("Path exists from the starting position to the exit!\n");
 			free_copy_map(map);
 			return ;
 		}

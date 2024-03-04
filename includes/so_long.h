@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 16:38:19 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/01 17:01:22 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/04 15:50:55 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,6 @@ typedef struct s_game
 	t_map	*map;
 }				t_game;
 
-
-
 /*
 **Game
 */
@@ -70,9 +68,17 @@ typedef struct s_game
 */
 
 int		window_display(t_game *game);
-int		render_background(t_game *game);
+void	render_all(t_game *game);
+/*
+**Game
+*/
+/*
+**game_utils
+*/
+
 t_img	new_sprite(void *mlx, char *path, t_game *game);
 void	init_sprite(t_game *game);
+int		collectible_check(t_game *game);
 
 /*
 **Game
@@ -82,6 +88,19 @@ void	init_sprite(t_game *game);
 */
 
 int		escape_input(int keysym, t_game *game);
+
+/*
+**Game
+*/
+/*
+**render_map
+*/
+
+void	render_wall(t_game *game);
+void	render_floor(t_game *game);
+void	render_exit(t_game *game);
+void	render_collectible(t_game *game);
+void	render_player(t_game *game);
 
 /*
 **Parsing
@@ -108,7 +127,6 @@ void	check_rectangle(t_map *map);
 int		check_map_characters(t_map *map);
 void	check_map_outline(t_map *map);
 
-
 /*
 **Parsing
 */
@@ -119,7 +137,7 @@ void	check_map_outline(t_map *map);
 void	destroy_images(t_game *game);
 void	free_map(t_map *map);
 void	free_copy_map(t_map *map);
-void	free_all(t_game *game);
+void	free_all_memory(t_game *game);
 
 /*
 **Parsing

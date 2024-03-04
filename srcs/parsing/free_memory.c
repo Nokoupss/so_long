@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 13:59:32 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/01 15:46:37 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/04 15:50:45 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	free_copy_map(t_map *map)
 	free(map->map_copy);
 }
 
-void	free_all(t_game *game)
+void	free_all_memory(t_game *game)
 {
 	destroy_images(game);
 	free_map(game->map);
