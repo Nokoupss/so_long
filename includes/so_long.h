@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 16:38:19 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/04 15:50:55 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/04 18:05:07 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void	render_all(t_game *game);
 t_img	new_sprite(void *mlx, char *path, t_game *game);
 void	init_sprite(t_game *game);
 int		collectible_check(t_game *game);
+void	end_prog(t_game *game, int y, int x, int keysym);
 
 /*
 **Game
@@ -88,6 +89,10 @@ int		collectible_check(t_game *game);
 */
 
 int		escape_input(int keysym, t_game *game);
+int		check_possible_move(int keysym, t_game *game);
+void	player_move(int keysym, t_game *game);
+void	movement(t_game *game, int keysym, int y, int x);
+void	keypress(int keysym, t_game *game);
 
 /*
 **Game

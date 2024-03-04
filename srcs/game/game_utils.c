@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 14:22:32 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/04 15:19:04 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/04 18:04:50 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,14 @@ int	collectible_check(t_game *game)
 	if (count == 0)
 		return (1);
 	return (0);
+}
+
+void	end_prog(t_game *game, int y, int x, int keysym)
+{
+	if (game->map->map[y][x] == 'E')
+	{
+		player_move(keysym, game);
+		free_all_memory(game);
+		ft_printf("YOU WIN\n");
+	}
 }

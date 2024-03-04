@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:46:31 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/04 15:49:09 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/04 16:08:27 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	check_path(t_map *map)
 			return ;
 		}
 	}
-	error_message("Error\nNo path exists from start to exit\n");
+	error_message("Error\nNo path exists from start to exit.\n");
 	free_copy_map(map);
 	exit(EXIT_FAILURE);
 }
