@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 16:38:19 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/04 18:05:07 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/05 18:30:32 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_map
 	int		exit_access;
 	int		player_y;
 	int		player_x;
+	int		count;
 }				t_map;
 
 typedef struct s_img
@@ -90,9 +91,9 @@ void	end_prog(t_game *game, int y, int x, int keysym);
 
 int		escape_input(int keysym, t_game *game);
 int		check_possible_move(int keysym, t_game *game);
-void	player_move(int keysym, t_game *game);
+void	player_move_character(int keysym, t_game *game);
 void	movement(t_game *game, int keysym, int y, int x);
-void	keypress(int keysym, t_game *game);
+int		movement_input(int keysym, t_game *game);
 
 /*
 **Game
@@ -114,10 +115,11 @@ void	render_player(t_game *game);
 **check_map_utils
 */
 
-int		get_len_map(int fd);
+int		get_len_map(int fd, t_game *game);
 void	error_message(char *str);
 int		ft_strlen_backslash_n(char *str);
-void	check_all_error(t_map *map, char *file);
+void	check_all_error(t_map *map, char *file, t_game *game);
+void	check_len_map(t_map *map, t_game *game);
 
 /*
 **Parsing
@@ -126,11 +128,11 @@ void	check_all_error(t_map *map, char *file);
 **check_map
 */
 
-void	check_file_extension(char *file);
-int		open_file(char *file);
-void	check_rectangle(t_map *map);
+void	check_file_extension(char *file, t_game *game);
+int		open_file(char *file, t_game *game);
+void	check_rectangle(t_map *map, t_game *game);
 int		check_map_characters(t_map *map);
-void	check_map_outline(t_map *map);
+void	check_map_outline(t_map *map, t_game *game);
 
 /*
 **Parsing
@@ -152,7 +154,7 @@ void	free_all_memory(t_game *game);
 */
 
 t_map	*init_map(void);
-t_map	*create_map(int fd, char *file);
+void	create_map(int fd, char *file, t_game *game);
 
 /*
 **Parsing

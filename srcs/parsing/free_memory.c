@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 13:59:32 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/04 15:50:45 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/05 17:19:23 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,17 @@ void	free_map(t_map *map)
 	size_t	i;
 
 	i = 0;
-	while (map->map[i])
+	if (map == NULL)
+		return ;
+	if (map->map != NULL)
 	{
-		free(map->map[i]);
-		i++;
+		while (map->map[i])
+		{
+			free(map->map[i]);
+			i++;
+		}
+		free(map->map);
 	}
-	free(map->map);
 	free(map);
 }
 
@@ -47,6 +52,8 @@ void	free_copy_map(t_map *map)
 	size_t	i;
 
 	i = 0;
+	if (map == NULL)
+		return ;
 	while (map->map_copy[i])
 	{
 		free(map->map_copy[i]);
@@ -59,7 +66,7 @@ void	free_all_memory(t_game *game)
 {
 	destroy_images(game);
 	free_map(game->map);
-	mlx_destroy_window(game->mlx_ptr, game->mlx_ptr);
+	mlx_destroy_window(game->mlx_ptr, game->mlx_win);
 	mlx_destroy_display(game->mlx_ptr);
 	free(game->mlx_ptr);
 	free(game);

@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:22:41 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/04 18:05:44 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/05 18:56:18 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	check_possible_move(int keysym, t_game *game)
 	return (1);
 }
 
-void	player_move(int keysym, t_game *game)
+void	player_move_character(int keysym, t_game *game)
 {
 	if (keysym == XK_Up)
 	{
@@ -74,7 +74,7 @@ void	player_move(int keysym, t_game *game)
 	else if (keysym == XK_Right)
 	{
 		game->map->map[game->map->player_y][game->map->player_x] = '0';
-		game->map->player_y++;
+		game->map->player_x++;
 		game->map->map[game->map->player_y][game->map->player_x] = 'P';
 	}
 }
@@ -84,19 +84,25 @@ void	movement(t_game *game, int keysym, int y, int x)
 	if (collectible_check(game) == 1)
 		end_prog(game, y, x, keysym);
 	if (check_possible_move(keysym, game) == 1)
-		player_move(keysym, game);
+	{
+		player_move_character(keysym, game);
+		game->map->count++;
+		ft_printf("Movements : ""%d\n", game->map->count);
+	}
 }
 
-void	keypress(int keysym, t_game *game)
+int	movement_input(int keysym, t_game *game)
 {
 	if (keysym == XK_Escape)
 		escape_input(keysym, game);
-	if (keysym == XK_Up)
+	else if (keysym == XK_Up)
 		movement(game, keysym, game->map->player_y - 1, game->map->player_x);
-	if (keysym == XK_Left)
+	else if (keysym == XK_Left)
 		movement(game, keysym, game->map->player_y, game->map->player_x - 1);
-	if (keysym == XK_Down)
+	else if (keysym == XK_Down)
 		movement(game, keysym, game->map->player_y + 1, game->map->player_x);
-	if (keysym == XK_Right)
+	else if (keysym == XK_Right)
 		movement(game, keysym, game->map->player_y, game->map->player_x + 1);
+	render_all(game);
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:13:40 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/01 14:00:06 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/05 18:07:53 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,31 +26,30 @@ t_map	*init_map(void)
 	map->exit = 0;
 	map->player = 0;
 	map->exit_access = 0;
+	map->count = 0;
 	return (map);
 }
 
-t_map	*create_map(int fd, char *file)
+void	create_map(int fd, char *file, t_game *game)
 {
-	t_map		*map;
 	size_t		len;
 	size_t		x;
 	int			fd2;
 
-	map = init_map();
-	len = get_len_map(fd);
+	game->map = init_map();
+	len = get_len_map(fd, game);
 	x = 0;
-	map->rows = len;
-	map->map = (char **)malloc(sizeof(char *) * (len + 1));
-	if (map->map == NULL)
-		return (MALLOC_ERROR);
-	fd2 = open_file(file);
-	map->map[x] = get_next_line(fd2);
+	game->map->rows = len;
+	game->map->map = (char **)malloc(sizeof(char *) * (len + 1));
+	if (game->map->map == NULL)
+		return ;
+	fd2 = open_file(file, game);
+	game->map->map[x] = get_next_line(fd2);
 	while (len > 0)
 	{
 		x++;
-		map->map[x] = get_next_line(fd2);
+		game->map->map[x] = get_next_line(fd2);
 		len--;
 	}
 	close(fd2);
-	return (map);
 }

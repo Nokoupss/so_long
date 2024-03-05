@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 14:22:32 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/04 18:04:50 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/05 18:21:48 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 
 t_img	new_sprite(void *mlx, char *path, t_game *game)
 {
-	t_img	sprite;
+	t_img	image;
 
-	sprite.img = mlx_xpm_file_to_image(mlx, path, &sprite.width, &sprite.height);
-	if (sprite.img == NULL)
+	image.img = mlx_xpm_file_to_image(mlx, path, &image.width, &image.height);
+	if (image.img == NULL)
 	{
 		destroy_images(game);
 		error_message("Error\nFailed to load sprite.\n");
 	}
-	return (sprite);
+	return (image);
 }
 
 void	init_sprite(t_game *game)
 {
-	game->coin = new_sprite(game->mlx_ptr, "srcs/sprite/coin.xpm", game);
-	game->doorclosed = new_sprite(game->mlx_ptr, "srcs/sprite/doorclosed.xpm", game);
-	game->dooropen = new_sprite(game->mlx_ptr, "srcs/sprite/dooropen.xpm", game);
-	game->floor = new_sprite(game->mlx_ptr, "srcs/sprite/floor.xpm", game);
-	game->player = new_sprite(game->mlx_ptr, "srcs/sprite/player.xpm", game);
-	game->wall = new_sprite(game->mlx_ptr, "srcs/sprite/wall.xpm", game);
+	game->coin = new_sprite(game->mlx_ptr, "srcs/img/coin.xpm", game);
+	game->doorclosed = new_sprite(game->mlx_ptr, "srcs/img/door1.xpm", game);
+	game->dooropen = new_sprite(game->mlx_ptr, "srcs/img/door2.xpm", game);
+	game->floor = new_sprite(game->mlx_ptr, "srcs/img/floor.xpm", game);
+	game->player = new_sprite(game->mlx_ptr, "srcs/img/player.xpm", game);
+	game->wall = new_sprite(game->mlx_ptr, "srcs/img/wall.xpm", game);
 }
 
 int	collectible_check(t_game *game)
@@ -64,8 +64,19 @@ void	end_prog(t_game *game, int y, int x, int keysym)
 {
 	if (game->map->map[y][x] == 'E')
 	{
-		player_move(keysym, game);
+		player_move_character(keysym, game);
 		free_all_memory(game);
-		ft_printf("YOU WIN\n");
+		ft_printf("\n\
+██████████████████████████████████████████████████████████████████\n\
+██                                                              ██\n\
+██  ███  ███  ██████  ██    ██     ██      ██ ██ ██    ██   ██  ██\n\
+██   ██  ██  ██    ██ ██    ██     ██      ██ ██ ███   ██   ██  ██\n\
+██    ████   █      █ ██    ██     ██  ██  ██ ██ ██ ██ ██   ██  ██\n\
+██     ██    ██    ██ ██    ██     ██ ████ ██ ██ ██  ████       ██\n\
+██     ██     ██████    ████        ███  ███  ██ ██   ███   ██  ██\n\
+██                                                              ██\n\
+██████████████████████████████████████████████████████████████████\n\n\
+");
+		exit(0);
 	}
 }
