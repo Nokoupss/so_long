@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 14:22:32 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/06 14:40:02 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/06 16:14:48 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	init_sprite(t_game *game)
 	game->player.img = NULL;
 	game->wall.img = NULL;
 }
+
 void	create_sprite(t_game *game)
 {
 	init_sprite(game);

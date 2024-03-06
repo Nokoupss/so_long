@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 16:38:19 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/06 14:39:32 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/06 16:08:10 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../minilibx-linux/mlx.h"
 # include "../srcs/utils/libft/libft.h"
 # include <X11/keysym.h>
+# include <X11/X.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
@@ -145,7 +146,7 @@ void	check_map_outline(t_map *map, t_game *game);
 void	destroy_images(t_game *game);
 void	free_map(t_map *map);
 void	free_copy_map(t_map *map);
-void	free_all_memory(t_game *game);
+int		free_all_memory(t_game *game);
 
 /*
 **Parsing
