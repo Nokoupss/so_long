@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 14:22:32 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/05 18:21:48 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/06 14:40:02 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,25 @@ t_img	new_sprite(void *mlx, char *path, t_game *game)
 	image.img = mlx_xpm_file_to_image(mlx, path, &image.width, &image.height);
 	if (image.img == NULL)
 	{
-		destroy_images(game);
+		free_all_memory(game);
 		error_message("Error\nFailed to load sprite.\n");
+		exit(EXIT_FAILURE);
 	}
 	return (image);
 }
 
 void	init_sprite(t_game *game)
 {
+	game->coin.img = NULL;
+	game->doorclosed.img = NULL;
+	game->dooropen.img = NULL;
+	game->floor.img = NULL;
+	game->player.img = NULL;
+	game->wall.img = NULL;
+}
+void	create_sprite(t_game *game)
+{
+	init_sprite(game);
 	game->coin = new_sprite(game->mlx_ptr, "srcs/img/coin.xpm", game);
 	game->doorclosed = new_sprite(game->mlx_ptr, "srcs/img/door1.xpm", game);
 	game->dooropen = new_sprite(game->mlx_ptr, "srcs/img/door2.xpm", game);

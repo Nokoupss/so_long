@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 16:38:19 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/05 18:30:32 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/06 14:39:32 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void	render_all(t_game *game);
 
 t_img	new_sprite(void *mlx, char *path, t_game *game);
 void	init_sprite(t_game *game);
+void	create_sprite(t_game *game);
 int		collectible_check(t_game *game);
 void	end_prog(t_game *game, int y, int x, int keysym);
 
@@ -166,6 +167,6 @@ void	create_map(int fd, char *file, t_game *game);
 void	create_copy(t_map *map);
 int		player_position(t_map *map);
 int		dfs(t_map *map, int y, int x);
-void	check_path(t_map *map);
+void	check_path(t_map *map, t_game *game);
 
 #endif

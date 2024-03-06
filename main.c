@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 13:31:46 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/05 18:22:11 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/06 14:39:41 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,15 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 	{
 		error_message("Error\nWrong arguments");
+		free(game);
 		exit(EXIT_FAILURE);
 	}
 	fd = open_file(argv[1], game);
 	create_map(fd, argv[1], game);
 	check_all_error(game->map, argv[1], game);
-	check_path(game->map);
+	check_path(game->map, game);
 	window_display(game);
-	init_sprite(game);
+	create_sprite(game);
 	mlx_key_hook(game->mlx_win, escape_input, game);
 	mlx_key_hook(game->mlx_win, movement_input, game);
 	render_all(game);
