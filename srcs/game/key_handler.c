@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:22:41 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/05 18:56:18 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/06 14:11:27 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,21 @@ int	check_possible_move(int keysym, t_game *game)
 	x = game->map->player_x;
 	if (keysym == XK_Up)
 	{
-		if (game->map->map[y - 1][x] == '1')
+		if (game->map->map[y - 1][x] == '1' || game->map->map[y - 1][x] == 'E')
 			return (0);
 	}
 	else if (keysym == XK_Left)
 	{
-		if (game->map->map[y][x - 1] == '1')
+		if (game->map->map[y][x - 1] == '1' || game->map->map[y][x - 1] == 'E')
 			return (0);
 	}
 	else if (keysym == XK_Down)
 	{
-		if (game->map->map[y + 1][x] == '1')
+		if (game->map->map[y + 1][x] == '1' || game->map->map[y + 1][x] == 'E')
 			return (0);
 	}
 	else if (keysym == XK_Right)
-		if (game->map->map[y][x + 1] == '1')
+		if (game->map->map[y][x + 1] == '1' || game->map->map[y][x + 1] == 'E')
 			return (0);
 	return (1);
 }
