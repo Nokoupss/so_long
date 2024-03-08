@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 14:22:32 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/06 16:14:48 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/08 16:18:36 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ void	end_prog(t_game *game, int y, int x, int keysym)
 	if (game->map->map[y][x] == 'E')
 	{
 		player_move_character(keysym, game);
-		free_all_memory(game);
 		ft_printf("\n\
 ██████████████████████████████████████████████████████████████████\n\
 ██                                                              ██\n\
@@ -89,6 +88,6 @@ void	end_prog(t_game *game, int y, int x, int keysym)
 ██                                                              ██\n\
 ██████████████████████████████████████████████████████████████████\n\n\
 ");
-		exit(0);
+	free_all_memory(game);
 	}
 }

@@ -6,7 +6,7 @@
 #    By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/19 15:36:16 by nbelkace          #+#    #+#              #
-#    Updated: 2024/03/06 17:31:41 by nbelkace         ###   ########.fr        #
+#    Updated: 2024/03/08 15:59:07 by nbelkace         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,7 @@ X11_FLAGS = -L/usr/X11/lib -lXext -lX11 -lm
 
 # Compiler and Flags
 CC = cc
-FLAGS = -Wall -Wextra -Werror -g3
+FLAGS = -Wall -Wextra -g3
 
 # Remove command
 RM = rm -f

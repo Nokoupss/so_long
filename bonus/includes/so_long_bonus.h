@@ -6,12 +6,12 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 16:38:19 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/06 17:25:13 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/08 16:00:13 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_BONUS_H
-# define SO_LONG_BONUS_H
+#ifndef SO_LONG_H
+# define SO_LONG_H
 
 # include "../../minilibx-linux/mlx.h"
 # include "../srcs/utils/libft/libft.h"
