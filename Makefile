@@ -6,7 +6,7 @@
 #    By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/19 15:36:16 by nbelkace          #+#    #+#              #
-#    Updated: 2024/03/08 15:59:07 by nbelkace         ###   ########.fr        #
+#    Updated: 2024/03/08 18:03:47 by nbelkace         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ SRCS_C_BONUS =	$(BONUS)/$(SRCS)/$(GAME)/display_bonus.c \
 				$(BONUS)/$(SRCS)/$(GAME)/game_utils_bonus.c \
 				$(BONUS)/$(SRCS)/$(GAME)/key_handler_bonus.c \
 				$(BONUS)/$(SRCS)/$(GAME)/render_map_bonus.c \
+				$(BONUS)/$(SRCS)/$(GAME)/render_player_bonus.c \
 				$(BONUS)/$(SRCS)/$(PARSING)/check_map_utils_bonus.c \
 				$(BONUS)/$(SRCS)/$(PARSING)/check_map_bonus.c \
 				$(BONUS)/$(SRCS)/$(PARSING)/free_memory_bonus.c \
@@ -62,7 +63,7 @@ X11_FLAGS = -L/usr/X11/lib -lXext -lX11 -lm
 
 # Compiler and Flags
 CC = cc
-FLAGS = -Wall -Wextra -g3
+FLAGS = -Wall -Wextra -Werror -g3
 
 # Remove command
 RM = rm -f

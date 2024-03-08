@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:22:41 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/08 16:16:59 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/08 17:18:33 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,6 @@ int	movement_input(int keysym, t_game *game)
 		movement(game, keysym, game->map->player_y + 1, game->map->player_x);
 	else if (keysym == XK_Right)
 		movement(game, keysym, game->map->player_y, game->map->player_x + 1);
-	render_all(game);
+	render_all(game, keysym);
 	return (1);
 }

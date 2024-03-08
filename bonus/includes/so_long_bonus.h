@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 16:38:19 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/08 16:00:13 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/08 17:40:35 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,10 @@ typedef struct s_game
 	t_img	dooropen;
 	t_img	floor;
 	t_img	player;
+	t_img	playerup;
+	t_img	playerdown;
+	t_img	playerleft;
+	t_img	slime;
 	t_img	wall;
 	t_map	*map;
 }				t_game;
@@ -70,7 +74,7 @@ typedef struct s_game
 */
 
 int		window_display(t_game *game);
-void	render_all(t_game *game);
+void	render_all(t_game *game, int keysym);
 /*
 **Game
 */
@@ -108,7 +112,18 @@ void	render_wall(t_game *game);
 void	render_floor(t_game *game);
 void	render_exit(t_game *game);
 void	render_collectible(t_game *game);
-void	render_player(t_game *game);
+
+/*
+**Game
+*/
+/*
+**render_player
+*/
+
+void	render_player_right(t_game *game);
+void	render_player_down(t_game *game);
+void	render_player_left(t_game *game);
+void	render_player_up(t_game *game);
 
 /*
 **Parsing

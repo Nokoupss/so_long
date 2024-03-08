@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 15:44:27 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/08 15:59:22 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/08 18:03:00 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,19 @@ int	window_display(t_game *game)
 	return (1);
 }
 
-void	render_all(t_game *game)
+void	render_all(t_game *game, int keysym)
 {
 	render_wall(game);
 	render_floor(game);
 	render_exit(game);
 	render_collectible(game);
-	render_player(game);
+	render_player_down(game);
+	if (keysym == XK_Right)
+		render_player_right(game);
+	else if (keysym == XK_Down)
+		render_player_down(game);
+	else if (keysym == XK_Left)
+		render_player_left(game);
+	else if (keysym == XK_Up)
+		render_player_up(game);
 }

@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 14:22:32 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/08 16:17:44 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/08 17:59:04 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,12 @@ t_img	new_sprite(void *mlx, char *path, t_game *game)
 {
 	t_img	image;
 
+	//printf("coucou\n");
+
 	image.img = mlx_xpm_file_to_image(mlx, path, &image.width, &image.height);
 	if (image.img == NULL)
 	{
+		printf("coucou\n");
 		free_all_memory(game);
 		error_message("Error\nFailed to load sprite.\n");
 		exit(EXIT_FAILURE);
@@ -33,18 +36,25 @@ void	init_sprite(t_game *game)
 	game->dooropen.img = NULL;
 	game->floor.img = NULL;
 	game->player.img = NULL;
+	game->playerdown.img = NULL;
+	game->playerleft.img = NULL;
+	game->playerup.img = NULL;
 	game->wall.img = NULL;
 }
 
 void	create_sprite(t_game *game)
 {
 	init_sprite(game);
-	game->coin = new_sprite(game->mlx_ptr, "srcs/img/coin.xpm", game);
-	game->doorclosed = new_sprite(game->mlx_ptr, "srcs/img/door1.xpm", game);
-	game->dooropen = new_sprite(game->mlx_ptr, "srcs/img/door2.xpm", game);
-	game->floor = new_sprite(game->mlx_ptr, "srcs/img/floor.xpm", game);
-	game->player = new_sprite(game->mlx_ptr, "srcs/img/player.xpm", game);
-	game->wall = new_sprite(game->mlx_ptr, "srcs/img/wall.xpm", game);
+
+	game->coin = new_sprite(game->mlx_ptr, "bonus/srcs/img_bonus/coin.xpm", game);
+	game->doorclosed = new_sprite(game->mlx_ptr, "bonus/srcs/img_bonus/door1.xpm", game);
+	game->dooropen = new_sprite(game->mlx_ptr, "bonus/srcs/img_bonus/door2.xpm", game);
+	game->floor = new_sprite(game->mlx_ptr, "bonus/srcs/img_bonus/floor.xpm", game);
+	game->player = new_sprite(game->mlx_ptr, "bonus/srcs/img_bonus/player.xpm", game);
+	game->playerdown = new_sprite(game->mlx_ptr, "bonus/srcs/img_bonus/playerdown.xpm", game);
+	game->playerleft = new_sprite(game->mlx_ptr, "bonus/srcs/img_bonus/playerleft.xpm", game);
+	game->playerup = new_sprite(game->mlx_ptr, "bonus/srcs/img_bonus/playerup.xpm", game);
+	game->wall = new_sprite(game->mlx_ptr, "bonus/srcs/img_bonus/wall.xpm", game);
 }
 
 int	collectible_check(t_game *game)

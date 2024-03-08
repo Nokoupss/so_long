@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 13:59:32 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/08 15:59:50 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/08 18:02:13 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ void	destroy_images(t_game *game)
 		mlx_destroy_image(game->mlx_ptr, game->floor.img);
 	if (game->player.img)
 		mlx_destroy_image(game->mlx_ptr, game->player.img);
+	if (game->playerdown.img)
+		mlx_destroy_image(game->mlx_ptr, game->playerdown.img);
+	if (game->playerup.img)
+		mlx_destroy_image(game->mlx_ptr, game->playerup.img);
+	if (game->playerleft.img)
+		mlx_destroy_image(game->mlx_ptr, game->playerleft.img);
 	if (game->wall.img)
 		mlx_destroy_image(game->mlx_ptr, game->wall.img);
 }
