@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 17:19:44 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/08 18:02:02 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/11 16:33:23 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	render_player_right(t_game *game)
 		y++;
 	}
 }
+
 void	render_player_down(t_game *game)
 {
 	int	x;
@@ -76,6 +77,7 @@ void	render_player_left(t_game *game)
 		y++;
 	}
 }
+
 void	render_player_up(t_game *game)
 {
 	int	x;

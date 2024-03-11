@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 14:22:32 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/08 16:18:36 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/11 16:34:01 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,6 @@ void	end_prog(t_game *game, int y, int x, int keysym)
 ██                                                              ██\n\
 ██████████████████████████████████████████████████████████████████\n\n\
 ");
-	free_all_memory(game);
+		free_all_memory(game);
 	}
 }

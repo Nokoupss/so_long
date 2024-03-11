@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:22:41 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/08 17:18:33 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/11 16:33:08 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int	escape_input(int keysym, t_game *game)
 {
 	if (keysym == XK_Escape)
 	{
-		free_all_memory(game);
 		ft_printf("CLOSE GAME\n");
+		free_all_memory(game);
 		exit(EXIT_FAILURE);
 	}
 	return (0);
@@ -82,12 +82,12 @@ void	player_move_character(int keysym, t_game *game)
 void	movement(t_game *game, int keysym, int y, int x)
 {
 	if (collectible_check(game) == 1)
-		end_prog(game, y, x, keysym);
+		end_prog_victory(game, y, x, keysym);
 	if (check_possible_move(keysym, game) == 1)
 	{
+		end_prog_defeat(game, y, x, keysym);
 		player_move_character(keysym, game);
 		game->map->count++;
-		ft_printf("Movements : ""%d\n", game->map->count);
 	}
 }
 
@@ -104,5 +104,6 @@ int	movement_input(int keysym, t_game *game)
 	else if (keysym == XK_Right)
 		movement(game, keysym, game->map->player_y, game->map->player_x + 1);
 	render_all(game, keysym);
+	print_move(game);
 	return (1);
 }

@@ -6,7 +6,7 @@
 #    By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/19 15:36:16 by nbelkace          #+#    #+#              #
-#    Updated: 2024/03/08 18:03:47 by nbelkace         ###   ########.fr        #
+#    Updated: 2024/03/11 16:31:22 by nbelkace         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,11 +38,14 @@ SRCS_C =	$(SRCS)/$(GAME)/display.c \
 
 SRCS_C_BONUS =	$(BONUS)/$(SRCS)/$(GAME)/display_bonus.c \
 				$(BONUS)/$(SRCS)/$(GAME)/game_utils_bonus.c \
+				$(BONUS)/$(SRCS)/$(GAME)/game_utils2_bonus.c \
 				$(BONUS)/$(SRCS)/$(GAME)/key_handler_bonus.c \
 				$(BONUS)/$(SRCS)/$(GAME)/render_map_bonus.c \
 				$(BONUS)/$(SRCS)/$(GAME)/render_player_bonus.c \
-				$(BONUS)/$(SRCS)/$(PARSING)/check_map_utils_bonus.c \
+				$(BONUS)/$(SRCS)/$(PARSING)/check_arguments_bonus.c \
 				$(BONUS)/$(SRCS)/$(PARSING)/check_map_bonus.c \
+				$(BONUS)/$(SRCS)/$(PARSING)/check_map_utils_bonus.c \
+				$(BONUS)/$(SRCS)/$(PARSING)/check_map_utils2_bonus.c \
 				$(BONUS)/$(SRCS)/$(PARSING)/free_memory_bonus.c \
 				$(BONUS)/$(SRCS)/$(PARSING)/init_map_bonus.c \
 				$(BONUS)/$(SRCS)/$(PARSING)/path_finding_bonus.c \
@@ -91,7 +94,7 @@ clean :
 
 fclean : clean
 	make -C $(UTILS_C)/libft fclean
-	${RM} ${NAME} ${OBJS_BONUS}
+	${RM} ${NAME} ${NAME_BONUS} ${OBJS_BONUS}
 
 re : fclean all
 

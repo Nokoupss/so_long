@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:13:40 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/08 15:59:54 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/11 15:33:08 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_map	*init_map(void)
 	map->collectible = 0;
 	map->exit = 0;
 	map->player = 0;
+	map->ennemy = 0;
 	map->exit_access = 0;
 	map->count = 0;
 	return (map);

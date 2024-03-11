@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:46:31 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/08 15:59:58 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/11 15:29:33 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	player_position(t_map *map)
 
 int	dfs(t_map *map, int y, int x)
 {
-	if (map->map_copy[y][x] == '1')
+	if (map->map_copy[y][x] == '1' || map->map_copy[y][x] == 'S')
 		return (0);
 	if (map->map_copy[y][x] == 'C')
 		map->collectible--;

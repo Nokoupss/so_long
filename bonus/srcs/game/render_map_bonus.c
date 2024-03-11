@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 14:12:01 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/08 17:19:50 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/11 13:49:45 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,25 @@ void	render_collectible(t_game *game)
 		}
 		y++;
 	}
+}
+
+void	render_ennemy(t_game *game)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
+	while (game->map->map[y] != NULL)
+	{
+		x = 0;
+		while (game->map->map[y][x] != '\0')
+		{
+			if (game->map->map[y][x] == 'S')
+				mlx_put_image_to_window(game->mlx_ptr, game->mlx_win, \
+				game->slime.img, x * 32, y * 32);
+			x++;
+		}
+		y++;
+	}	
 }

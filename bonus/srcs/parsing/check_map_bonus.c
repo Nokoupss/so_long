@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:23:28 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/08 15:59:42 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/11 16:23:15 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,18 +88,13 @@ int	check_map_characters(t_map *map)
 		row_content = map->map[x];
 		while (row_content[y] && row_content[y] != '\n')
 		{
-			if (row_content[y] == 'P')
-				map->player++;
-			else if (row_content[y] == 'E')
-				map->exit++;
-			else if (row_content[y] == 'C')
-				map->collectible++;
-			else if (row_content[y] != '1' && row_content[y] != '0')
+			if (check_map_characters_utils(map, row_content[y]) == 0)
 				return (0);
 		y++;
 		}
 	}
-	if (map->player == 1 && map->exit == 1 && map->collectible >= 1)
+	if (map->player == 1 && map->exit == 1 && map->collectible >= 1 \
+		&& map->ennemy >= 0)
 		return (1);
 	return (0);
 }

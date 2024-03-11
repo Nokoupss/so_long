@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 13:59:32 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/08 18:02:13 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/11 13:49:02 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	destroy_images(t_game *game)
 		mlx_destroy_image(game->mlx_ptr, game->playerleft.img);
 	if (game->wall.img)
 		mlx_destroy_image(game->mlx_ptr, game->wall.img);
+	if (game->slime.img)
+		mlx_destroy_image(game->mlx_ptr, game->slime.img);
 }
 
 void	free_map(t_map *map)

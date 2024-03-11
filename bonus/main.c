@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 13:31:46 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/08 17:18:23 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/11 16:20:24 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,7 @@ int	main(int argc, char **argv)
 
 	i = 0;
 	keysym = 0;
-	if (argc != 2)
-	{
-		error_message("Error\nWrong arguments");
-		exit(EXIT_FAILURE);
-	}
+	check_arguments(argc);
 	game = (t_game *)malloc(sizeof(t_game));
 	game->map = NULL;
 	fd = open_file(argv[1], game);
@@ -35,7 +31,7 @@ int	main(int argc, char **argv)
 	window_display(game);
 	create_sprite(game);
 	mlx_key_hook(game->mlx_win, escape_input, game);
-	mlx_key_hook(game->mlx_win, movement_input, game);
+	mlx_hook(game->mlx_win, KeyPress, KeyPressMask, movement_input, game);
 	mlx_hook(game->mlx_win, DestroyNotify, 0, free_all_memory, game);
 	render_all(game, keysym);
 	mlx_loop(game->mlx_ptr);

@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 15:44:27 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/08 18:03:00 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/11 13:52:36 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	render_all(t_game *game, int keysym)
 	render_floor(game);
 	render_exit(game);
 	render_collectible(game);
+	render_ennemy(game);
 	render_player_down(game);
 	if (keysym == XK_Right)
 		render_player_right(game);
