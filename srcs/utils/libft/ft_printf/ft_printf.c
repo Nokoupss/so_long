@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 16:43:29 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/01/31 11:49:04 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/03/12 13:15:29 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	ft_printf(const char *str, ...)
 	int		temp;
 
 	if (str == 0)
-		return (0);
+		return (-1);
 	va_start(args, str);
 	i = -1;
 	len = 0;
