@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:23:28 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/11 16:23:15 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/10/23 11:02:27 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	check_file_extension(char *file, t_game *game)
 	{
 		error_message("Error\nNo file extension.\n");
 		free_map(game->map);
+		close(game->fd);
 		free(game);
 		exit(EXIT_FAILURE);
 	}
@@ -32,6 +33,7 @@ void	check_file_extension(char *file, t_game *game)
 	{
 		error_message("Error\nWrong file extension.\n");
 		free_map(game->map);
+		close(game->fd);
 		free(game);
 		exit(EXIT_FAILURE);
 	}
@@ -39,16 +41,13 @@ void	check_file_extension(char *file, t_game *game)
 
 int	open_file(char *file, t_game *game)
 {
-	int	fd;
-
-	fd = open(file, O_RDONLY);
-	if (fd < 0)
+	game->fd = open(file, O_RDONLY);
+	if (game->fd < 0)
 	{
 		error_message("Error\nReading the file.\n");
-		free(game);
-		exit(EXIT_FAILURE);
+		return (-1);
 	}
-	return (fd);
+	return (game->fd);
 }
 
 void	check_rectangle(t_map *map, t_game *game)
@@ -67,6 +66,7 @@ void	check_rectangle(t_map *map, t_game *game)
 		{
 			error_message("Error\nMap is not a rectangle.\n");
 			free_map(map);
+			close(game->fd);
 			free(game);
 			exit(EXIT_FAILURE);
 		}
@@ -110,9 +110,7 @@ void	check_map_outline(t_map *map, t_game *game)
 		if (map->map[0][x] != '1' || map->map[map->rows - 1][x] != '1')
 		{
 			error_message("Error\nMap outline is not made of 1.\n");
-			free_map(map);
-			free(game);
-			exit(EXIT_FAILURE);
+			free_close(game);
 		}
 	}
 	y = -1;
@@ -121,9 +119,7 @@ void	check_map_outline(t_map *map, t_game *game)
 		if (map->map[y][0] != '1' || map->map[y][map->cols - 1] != '1')
 		{
 			error_message("Error\nMap outline is not made of 1.\n");
-			free_map(map);
-			free(game);
-			exit(EXIT_FAILURE);
+			free_close(game);
 		}
 	}
 }

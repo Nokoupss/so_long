@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_utils_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nadjy <nadjy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 14:22:32 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/11 16:29:16 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/10/11 15:57:59 by nadjy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	init_sprite(t_game *game)
 
 void	create_sprite(t_game *game)
 {
-	init_sprite(game);
 	game->coin = new_sprite(game->mlx_ptr, \
 	"bonus/srcs/img_bonus/coin.xpm", game);
 	game->doorclosed = new_sprite(game->mlx_ptr, \

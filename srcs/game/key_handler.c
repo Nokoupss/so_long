@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:22:41 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/06 14:11:27 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/10/10 19:41:22 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	escape_input(int keysym, t_game *game)
 {
 	if (keysym == XK_Escape)
 	{
-		free_all_memory(game);
+		free_all_memory(game, fd);
 		ft_printf("CLOSE GAME\n");
 		exit(EXIT_FAILURE);
 	}

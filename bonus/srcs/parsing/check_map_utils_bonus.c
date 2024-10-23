@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:06:51 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/08 15:59:46 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/10/23 11:06:43 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,26 +24,28 @@ void	error_message(char *str)
 	}
 }
 
-int	get_len_map(int fd, t_game *game)
+int	get_len_map(t_game *game)
 {
 	size_t	len;
 	char	*line;
 
 	len = 0;
-	line = get_next_line(fd);
+	line = get_next_line(game->fd);
 	while (line)
 	{
 		free(line);
-		line = get_next_line(fd);
+		line = get_next_line(game->fd);
 		len++;
 	}
 	if (len < 3)
 	{
 		error_message("Error\nMap too small.\n");
 		free_map(game->map);
+		close(game->fd);
 		free(game);
 		exit(EXIT_FAILURE);
 	}
+	close(game->fd);
 	return (len);
 }
 
@@ -61,6 +63,22 @@ int	ft_strlen_backslash_n(char *str)
 
 void	check_all_error(t_map *map, char *file, t_game *game)
 {
+	if (game->map == NULL)
+	{
+		close(game->fd);
+		free(game);
+		exit(EXIT_FAILURE);
+	}
+	if (game->map != NULL)
+	{
+		if (game->map->map == NULL)
+		{
+			close(game->fd);
+			free(game->map);
+			free(game);
+			exit(EXIT_FAILURE);
+		}
+	}
 	check_file_extension(file, game);
 	check_len_map(map, game);
 	check_rectangle(map, game);
@@ -68,9 +86,7 @@ void	check_all_error(t_map *map, char *file, t_game *game)
 	if (check_map_characters(map) == 0)
 	{
 		error_message("Error\nInvalid characters in the map.\n");
-		free_map(map);
-		free(game);
-		exit(EXIT_FAILURE);
+		free_close(game);
 	}
 }
 
@@ -82,6 +98,7 @@ void	check_len_map(t_map *map, t_game *game)
 	{
 		error_message("Error\nMap too big\n");
 		free_map(map);
+		close(game->fd);
 		free(game);
 		exit(EXIT_FAILURE);
 	}

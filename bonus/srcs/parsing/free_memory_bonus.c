@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 13:59:32 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/11 13:49:02 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/10/21 12:25:16 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,21 @@ int	free_all_memory(t_game *game)
 {
 	destroy_images(game);
 	free_map(game->map);
-	mlx_destroy_window(game->mlx_ptr, game->mlx_win);
-	mlx_destroy_display(game->mlx_ptr);
+	if (game->mlx_ptr)
+	{
+		if (game->mlx_win)
+			mlx_destroy_window(game->mlx_ptr, game->mlx_win);
+		mlx_destroy_display(game->mlx_ptr);
+	}
 	free(game->mlx_ptr);
+	free(game);
+	exit(EXIT_FAILURE);
+}
+
+int	free_close(t_game *game)
+{
+	free_map(game->map);
+	close(game->fd);
 	free(game);
 	exit(EXIT_FAILURE);
 }

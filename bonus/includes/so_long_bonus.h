@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 16:38:19 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/11 16:32:53 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/10/21 13:44:38 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_game
 {
 	void	*mlx_ptr;
 	void	*mlx_win;
+	int		fd;
 	t_img	coin;
 	t_img	doorclosed;
 	t_img	dooropen;
@@ -144,7 +145,7 @@ void	render_player_up(t_game *game);
 **check_map_utils_bonus
 */
 
-int		get_len_map(int fd, t_game *game);
+int		get_len_map(t_game *game);
 void	error_message(char *str);
 int		ft_strlen_backslash_n(char *str);
 void	check_all_error(t_map *map, char *file, t_game *game);
@@ -192,6 +193,7 @@ void	destroy_images(t_game *game);
 void	free_map(t_map *map);
 void	free_copy_map(t_map *map);
 int		free_all_memory(t_game *game);
+int		free_close(t_game *game);
 
 /*
 **Parsing
@@ -201,7 +203,7 @@ int		free_all_memory(t_game *game);
 */
 
 t_map	*init_map(void);
-void	create_map(int fd, char *file, t_game *game);
+void	create_map(char *file, t_game *game);
 
 /*
 **Parsing

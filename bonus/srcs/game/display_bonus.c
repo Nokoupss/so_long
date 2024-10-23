@@ -6,7 +6,7 @@
 /*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 15:44:27 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/11 13:52:36 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/10/10 20:07:54 by nbelkace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,14 @@
 
 int	window_display(t_game *game)
 {
+	game->mlx_win = NULL;
 	game->mlx_ptr = mlx_init();
 	if (game->mlx_ptr == NULL)
 		return (MALLOC_ERROR);
-	game->mlx_win = mlx_new_window(game->mlx_ptr, \
-	game->map->cols * WIN_WIDTH, game->map->rows * WIN_HEIGHT, "so_long");
+	game->mlx_win = mlx_new_window(game->mlx_ptr, game->map->cols * WIN_WIDTH, \
+	game->map->rows * WIN_HEIGHT, "so_long");
 	if (game->mlx_win == NULL)
 	{
-		mlx_destroy_display(game->mlx_ptr);
-		free(game->mlx_ptr);
-		free(game);
 		error_message("Error\nCouldn't create the window.\n");
 		return (MALLOC_ERROR);
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path_finding_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nadjy <nadjy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:46:31 by nbelkace          #+#    #+#             */
-/*   Updated: 2024/03/11 15:29:33 by nbelkace         ###   ########.fr       */
+/*   Updated: 2024/10/11 16:14:53 by nadjy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ void	check_path(t_map *map, t_game *game)
 	error_message("Error\nNo path exists from start to exit.\n");
 	free_copy_map(map);
 	free_map(map);
+	close(game->fd);
 	free(game);
 	exit(EXIT_FAILURE);
 }

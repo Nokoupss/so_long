@@ -6,11 +6,10 @@
 #    By: nbelkace <nbelkace@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/19 15:36:16 by nbelkace          #+#    #+#              #
-#    Updated: 2024/03/11 16:31:22 by nbelkace         ###   ########.fr        #
+#    Updated: 2024/10/10 18:43:55 by nbelkace         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = so_long
 NAME_BONUS = so_long_bonus
 
 # Directory
@@ -79,7 +78,9 @@ ${NAME} : ${OBJS}
 	make -C $(UTILS_C)/libft
 	${CC} -o ${NAME} ${OBJS} ${ARCHIVE} ${LIBFT} ${X11_FLAGS}
 
-bonus : ${OBJS_BONUS}
+bonus : ${NAME_BONUS}
+
+${NAME_BONUS} : ${OBJS_BONUS}
 	make -C minilibx-linux
 	make -C $(UTILS_C_BONUS)/libft
 	${CC} -o ${NAME_BONUS} ${OBJS_BONUS} ${ARCHIVE} ${LIBFT_BONUS} ${X11_FLAGS}
